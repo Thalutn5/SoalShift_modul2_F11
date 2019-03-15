@@ -18,15 +18,29 @@ dan struct yang bertipe pointer yaitu :
     
       char namefile4[256];
     
-    char namefile5[256]="_grey.png";
+      char namefile5[256]="_grey.png";
     
-    char folderawal[256];
+      char folderawal[256];
     
-    char folderakhir[256];
+      char folderakhir[256];
     
-    DIR *d;
+      DIR *d;
     
-    struct dirent *dir;
+      struct dirent *dir;
+- Kita juga mengisikan variabel pointer d tadi sebagai arah menuju dan membuka file awal itu berada
+        
+      d = opendir("/home/thalutn5/modul2/soal1/");
+
+- Lalu kita menggunakan sebuah if dengan syarat d, dengan artian sampai file didalam folder soal1 itu sudah habis
+- Didalam if tersebut ada looping dengan syarat dimana dia ngeread semua file yang ada didalam folder tersebut 
+
+      while ((dir = readdir(d)) != NULL)
+
+- Sementara didalam while itu kami mengisikan 2 buah array of char tersebut sebagai arah dari suatu folder awal dan folder hasil
+
+      strcpy(folderawal, "/home/thalutn5/modul2/soal1/");
+
+      strcpy(folderakhir, "/home/thalutn5/modul2/soal1/gambar/");
 
 # Nomor 2
 # Nomor 3
