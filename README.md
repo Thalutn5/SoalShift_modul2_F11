@@ -89,7 +89,9 @@ Pada suatu hari Kusuma dicampakkan oleh Elen karena Elen dimenangkan oleh orang 
 Karena sedih berkepanjangan, tugas kalian sebagai teman Kusuma adalah membantunya untuk menghapus semua kenangan tentang Elen dengan membuat program C yang bisa mendeteksi owner 
 dan group dan menghapus file “elen.ku” setiap 3 detik dengan syarat ketika owner dan grupnya menjadi “www-data”. Ternyata kamu memiliki kendala karena permission pada file “elen.ku”.
 Jadi, ubahlah permissionnya menjadi 777. Setelah kenangan tentang Elen terhapus, maka Kusuma bisa move on. Catatan: Tidak boleh menggunakan crontab
-jawab :
+
+Jawab :
+
 - Pertama-tama kita membuat sebuah folder yang bernama "gambar" dan berisikan sebuah file yang bernama "elen.ku" 
 - setelah kita membuat struktur daemon lalu  kita membuat struct didalam whilenya dengan jenis stat, passwd dan group
     
@@ -138,4 +140,66 @@ jawab :
 
 # Nomor 3
 # Nomor 4
+4. Dalam direktori /home/[user]/Documents/makanan terdapat file makan_enak.txt yang berisikan daftar makanan terkenal di Surabaya. Elen sedang melakukan diet dan seringkali tergiur untuk membaca isi makan_enak.txt karena ngidam makanan enak. Sebagai teman yang baik, Anda membantu Elen dengan membuat program C yang berjalan setiap 5 detik untuk memeriksa apakah file makan_enak.txt pernah dibuka setidaknya 30 detik yang lalu (rentang 0 - 30 detik).Jika file itu pernah dibuka, program Anda akan membuat 1 file makan_sehat#.txt di direktori
+ /home/[user]/Documents/makanan dengan '#' berisi bilangan bulat dari 1 sampai tak hingga untuk mengingatkan Elen agar berdiet.
+
+Jawab :
+
+- Setelah membuat struktur daemon, kita membuat sebuah variabel integer diluar while pada daemon
+
+      int iterasi=1;
+
+- Lalu isi dari whilenya adalah kita membuat sebuah 3 variabel yang bertipe array of char
+
+      char fileawal[256];
+
+      char filebaru[256];
+
+      char ganti[3];
+
+- Kita juga perlu membuat struct stat
+
+      struct stat info;
+
+- Lalu kita isikan 2 variabel tersebut dengan diretori sebuah file
+
+      strcpy(fileawal, "home/thalutn5/Documents/makanan/makan_enak.txt");
+
+      strcpy(filebaru, "home/thalutn5/Documents/makanan/makan_sehat");
+
+- Kemudian kita mengkopikan isi nilai dari variabel iterasi kepada variabel ganti yang bertipe char
+
+      sprintf(ganti, "%d", iterasi);
+
+- Setelah itu kita mengambil informasi pada isi dari variabel fileawal
+
+      stat(fileawal, &info);
+
+- Lalu kita menggabungkan isi dari variabel filebaru dengan isi variabel ganti yang berupa angka iterasi
+
+      strcat(filebaru, ganti);
+
+- Kita juga perlu menggabungkan isi dari variabel filebaru tadi dengan sting ".txt"
+
+      strcat(filebaru, ".txt");
+
+- Baru deh kita membuat sebuah if dengan syarat dimana waktu pada saat programnya diajalankan dan waktu file diaksesnya kurang dar 30 detik, maka ia akan membuat sebuah file baru dengan iterasi tertentu
+  
+      if(difftime(time(NULL), info.st_atime)<=30)
+      
+      {
+	
+            FILE *newfile = fopen(filebaru, "w");
+	
+            fclose(newfile);
+	
+            iterasi = iterasi + 1;
+
+      }
+
+- Jangan lupa untuk menyeting kodingan agar selalu berjalan setiap 5 detik dengan
+
+      sleep(5);
+
+
 # Nomor 5
