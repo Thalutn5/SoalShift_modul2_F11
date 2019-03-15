@@ -188,9 +188,13 @@ Jawab :
       if(difftime(time(NULL), info.st_atime)<=30)
       
       {
+	
             FILE *newfile = fopen(filebaru, "w");
+	
             fclose(newfile);
+	
             iterasi = iterasi + 1;
+
       }
 
 - Jangan lupa untuk menyeting kodingan agar selalu berjalan setiap 5 detik dengan
