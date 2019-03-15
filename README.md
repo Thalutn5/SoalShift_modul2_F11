@@ -11,21 +11,13 @@ Jawab :
 dan struct yang bertipe pointer yaitu :
   
       char namefile[256];
-    
       char *namefile2;
-    
-      char namefile3[256
-    
+      char namefile3[256];
       char namefile4[256];
-    
       char namefile5[256]="_grey.png";
-    
       char folderawal[256];
-    
       char folderakhir[256];
-    
       DIR *d;
-    
       struct dirent *dir;
 - Kita juga mengisikan variabel pointer d tadi sebagai arah menuju dan membuka file awal itu berada
         
@@ -39,7 +31,6 @@ dan struct yang bertipe pointer yaitu :
 - Sementara didalam while itu kami mengisikan 2 buah array of char tersebut sebagai arah dari suatu folder awal dan folder hasil
 
       strcpy(folderawal, "/home/thalutn5/modul2/soal1/");
-
       strcpy(folderakhir, "/home/thalutn5/modul2/soal1/gambar/");
 - Lalu kita juga mengkopy nama file kedalam sebuah variabel namefile
 
@@ -96,9 +87,7 @@ Jawab :
 - setelah kita membuat struktur daemon lalu  kita membuat struct didalam whilenya dengan jenis stat, passwd dan group
     
       struct stat info;
-      
       struct passwd *pwd;
-      
       struct group *group;
       
 - Kita juga perlu membuat sebuah variabel dengan tipe data array of char dengan nama folderawal
@@ -120,13 +109,11 @@ Jawab :
 - Lalu kita mengisi variabel pwd dan group dengan id user dan id grup dari owner lalu disimpan di tempat yang ditunjuk oleh pwd dan grup
 
       pwd = getpwuid(info.st_uid);
-      
       group = getgrgid(info.st_gid);
 
 - Setelah itu kita membuat sebuah variabel integer yang dibuat untuk menampung jika perbandingan antara nama dari password dan group itu sama dengan isi dari variabel cari
 
       int if1 = (strcmp(pwd->pw_name, cari));
-
       int if2 = (strcmp(group->gr_name, cari));
 
 - Baru deh, kita membuat suatu if dengan syarat dimana if itu bernilai salah, maka kita harus menghpus filenya
@@ -152,9 +139,7 @@ Jawab :
 - Lalu isi dari whilenya adalah kita membuat sebuah 3 variabel yang bertipe array of char
 
       char fileawal[256];
-
       char filebaru[256];
-
       char ganti[3];
 
 - Kita juga perlu membuat struct stat
@@ -164,7 +149,6 @@ Jawab :
 - Lalu kita isikan 2 variabel tersebut dengan diretori sebuah file
 
       strcpy(fileawal, "home/thalutn5/Documents/makanan/makan_enak.txt");
-
       strcpy(filebaru, "home/thalutn5/Documents/makanan/makan_sehat");
 
 - Kemudian kita mengkopikan isi nilai dari variabel iterasi kepada variabel ganti yang bertipe char
