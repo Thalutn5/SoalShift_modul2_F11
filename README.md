@@ -141,6 +141,40 @@ Catatan:
 
 Jawab :
 
+ - Untuk mengerjakan soal ini kami membuat beberapa variabel dengan keterangan :
+	        
+        pid_t child_1;		// membuat child 1 untuk mengunzip file campur2.zip
+	      pid_t child_2;		// membuat file dengan nama daftar.txt
+	      pid_t child_3;		// untuk ngesort dan menggabungkan file file yang berekstensi .txt
+	      int ada; 		// untuk
+	      int fd[2]; 		// array untuk menyimpan hasil output sementara agar bisa di proses ke tahap selanjutnya
+	      char gus [1000];	// sebagai tempat menyimpan file .txt yang sudah di list
+
+ - Lalu kita buat 3 child dalam if dan else dengan kondisi :
+	child_1 untuk mengunzip file campur2.zip
+	child_2 untuk membuat file dengan nama daftar.txt
+	child_3 untuk mengelist file yang berformat.txt
+
+ - Lalu kita tambahkan 
+ 
+        while(wait(&ada)>0); 
+ 
+   agar ketiga child ini tidak berjalan berbarengan
+ - Lalu kita pakai char gus untuk menyimpan file.txt yang baru saja di proses pada ketiga child tersebut.
+ - Kita membuka directori (fdopen) dan membuat daftar.txt pada direktori ini
+  
+        close(fd[1]);
+        FILE* temp= fdopen(fd[0], "r"); 	
+        FILE *daftar = fopen("daftar.txt", "w");
+ 
+ - Lalu dengan fungsi while kita mengsortir semua data yang memiliki format .txt untuk masuk dalam daftar.txt berbentuk nama stringnya saja.
+ 
+       while (fgets(gus, sizeof(gus), temp) != NULL) { //buat ngambil datanya di dalem gus
+	      	if (strstr(&gus[strlen(gus)-5], ".txt") != NULL) //un
+		      fprintf(daftar, "%s", gus);
+		   } 
+
+
 # Nomor 4
 Dalam direktori /home/[user]/Documents/makanan terdapat file makan_enak.txt yang berisikan daftar makanan terkenal di Surabaya. Elen sedang melakukan diet dan seringkali tergiur untuk membaca isi makan_enak.txt karena ngidam makanan enak. Sebagai teman yang baik, Anda membantu Elen dengan membuat program C yang berjalan setiap 5 detik untuk memeriksa apakah file makan_enak.txt pernah dibuka setidaknya 30 detik yang lalu (rentang 0 - 30 detik).Jika file itu pernah dibuka, program Anda akan membuat 1 file makan_sehat#.txt di direktori
  /home/[user]/Documents/makanan dengan '#' berisi bilangan bulat dari 1 sampai tak hingga untuk mengingatkan Elen agar berdiet.
