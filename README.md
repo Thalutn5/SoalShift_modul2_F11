@@ -10,13 +10,13 @@ Jawab :
 - Untuk mengerjakan soal ini kami membuat beberapa variabel didalam while daemon yang bertipe array of char sebanyak 6, 1 variabel char yang bertipe pointer, variabel DIR yang bertipe pointer, 
 dan struct yang bertipe pointer yaitu :
   
-    char namefile[256];
+      char namefile[256];
     
-    char *namefile2;
+      char *namefile2;
     
-    char namefile3[256
+      char namefile3[256
     
-    char namefile4[256];
+      char namefile4[256];
     
     char namefile5[256]="_grey.png";
     
