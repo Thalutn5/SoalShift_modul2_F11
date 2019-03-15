@@ -186,15 +186,10 @@ Jawab :
 - Baru deh kita membuat sebuah if dengan syarat dimana waktu pada saat programnya diajalankan dan waktu file diaksesnya kurang dar 30 detik, maka ia akan membuat sebuah file baru dengan iterasi tertentu
   
       if(difftime(time(NULL), info.st_atime)<=30)
-      
       {
-	
             FILE *newfile = fopen(filebaru, "w");
-	
             fclose(newfile);
-	
             iterasi = iterasi + 1;
-
       }
 
 - Jangan lupa untuk menyeting kodingan agar selalu berjalan setiap 5 detik dengan
