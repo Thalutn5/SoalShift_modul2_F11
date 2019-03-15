@@ -85,6 +85,57 @@ dan struct yang bertipe pointer yaitu :
       closedir(d);
 
 # Nomor 2
+Pada suatu hari Kusuma dicampakkan oleh Elen karena Elen dimenangkan oleh orang lain. Semua kenangan tentang Elen berada pada file bernama “elen.ku” pada direktori “hatiku”. 
+Karena sedih berkepanjangan, tugas kalian sebagai teman Kusuma adalah membantunya untuk menghapus semua kenangan tentang Elen dengan membuat program C yang bisa mendeteksi owner 
+dan group dan menghapus file “elen.ku” setiap 3 detik dengan syarat ketika owner dan grupnya menjadi “www-data”. Ternyata kamu memiliki kendala karena permission pada file “elen.ku”.
+Jadi, ubahlah permissionnya menjadi 777. Setelah kenangan tentang Elen terhapus, maka Kusuma bisa move on. Catatan: Tidak boleh menggunakan crontab
+jawab :
+- Pertama-tama kita membuat sebuah folder yang bernama "gambar" dan berisikan sebuah file yang bernama "elen.ku" 
+- setelah kita membuat struktur daemon lalu  kita membuat struct didalam whilenya dengan jenis stat, passwd dan group
+    
+      struct stat info;
+      
+      struct passwd *pwd;
+      
+      struct group *group;
+      
+- Kita juga perlu membuat sebuah variabel dengan tipe data array of char dengan nama folderawal
+
+      char folderawal[256];
+
+- Serta kita juga memasukkan sebuah alamat direktori pada variabel tersebut
+
+      strcpy(folderawal, "/home/thalutn5/modul2/soal2/hatiku/elen.ku");
+
+- Kita juga perlu membuat sebuah variabel yang berisi "www-data"
+
+       char cari[256] = "www-data";
+
+- Lalu kita mengambil info yang ada pada file "elen.ku"
+
+       stat(folderawal, &info);
+
+- Lalu kita mengisi variabel pwd dan group dengan id user dan id grup dari owner lalu disimpan di tempat yang ditunjuk oleh pwd dan grup
+
+      pwd = getpwuid(info.st_uid);
+      
+      group = getgrgid(info.st_gid);
+
+- Setelah itu kita membuat sebuah variabel integer yang dibuat untuk menampung jika perbandingan antara nama dari password dan group itu sama dengan isi dari variabel cari
+
+      int if1 = (strcmp(pwd->pw_name, cari));
+
+      int if2 = (strcmp(group->gr_name, cari));
+
+- Baru deh, kita membuat suatu if dengan syarat dimana if itu bernilai salah, maka kita harus menghpus filenya
+
+      if(if1==0 && if2==0)
+      { remove(folderawal); }
+      
+- Dan yang terakhir adalah menyeting kodingan agar selalu menghapus file setiap 3 detik dengan
+          
+      sleep(3);
+
 # Nomor 3
 # Nomor 4
 # Nomor 5
