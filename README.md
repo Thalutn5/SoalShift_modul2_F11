@@ -128,6 +128,7 @@ Jawab :
 # Nomor 3
 Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”. 
 Buatlah program C yang dapat :
+
 i)  mengekstrak file zip tersebut.
 
 ii) menyimpan daftar file dari folder “campur2” yang memiliki ekstensi .txt ke dalam file daftar.txt. 
@@ -206,4 +207,5 @@ Ket:
 ‘#’ : increment per menit. Mulai dari 1
 
 b. Buatlah program c untuk menghentikan program di atas.
+
 NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan program.
