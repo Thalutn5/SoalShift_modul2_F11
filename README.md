@@ -11,13 +11,21 @@ Jawab :
 dan struct yang bertipe pointer yaitu :
   
     char namefile[256];
+    
     char *namefile2;
-    char namefile3[256];
+    
+    char namefile3[256
+    
     char namefile4[256];
+    
     char namefile5[256]="_grey.png";
+    
     char folderawal[256];
+    
     char folderakhir[256];
+    
     DIR *d;
+    
     struct dirent *dir;
 
 # Nomor 2
