@@ -41,6 +41,48 @@ dan struct yang bertipe pointer yaitu :
       strcpy(folderawal, "/home/thalutn5/modul2/soal1/");
 
       strcpy(folderakhir, "/home/thalutn5/modul2/soal1/gambar/");
+- Lalu kita juga mengkopy nama file kedalam sebuah variabel namefile
+
+      strcpy(namefile, dir->d_name);
+    
+- Selain itu kami juga mengisikan namefile2 tadi dengan alamat dari titik yang ada pada sebuah nama file
+
+      namefile2 = strrchr(namefile, '.'); 
+
+- Lalu kita mengkopy nama file yang asli ke dalam sebuah variabel yang bernama namefile4
+
+      strcpy(namefile4, namefile1);
+
+- Setelah itu kami membuat if lagi dengan syarat jika namefile2 itu isinya sama dengan ".png", maka
+
+      if(namefile2 && (strcmp(namefile2, ".png")==0))
+ 
+- Lalu kita ganti nilai dari alamat namefile2 tadi dengan sebuah karakter null agar bisa menghapus "png"
+
+      *namefile2 = '\0';
+- Kita juga mengkopy nama dari isi variabel namefile yang sudah hilang ".png"nya kedalam sebuah variabel namefile3
+
+      strcpy(namefile3, namefile);
+
+- Sekarang kita mengkombinasikan isi dari variabel namefile 3 dan namefile5
+
+      strcat(namefile3, namefile5);
+
+- Lalu kita menggabungkan isi string dari variabel folderakhir dengan variabel namefile3
+
+      strcat(folderakhir, namefile3);
+
+- Kita juga perlu menggabungkan isi string dari variabel folderawal dengan variabel namefile4
+
+      strcat(folderawal, namefile4);
+
+- Dan kita juga perlu merename variabel folderawal dengan folderakhir
+
+      rename(folderawal, folderakhir);
+
+- Tidak lupa untuk menutup file yang kita baca dengan syntax
+
+      closedir(d);
 
 # Nomor 2
 # Nomor 3
