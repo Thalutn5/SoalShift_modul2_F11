@@ -130,7 +130,6 @@ Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”
 Buatlah program C yang dapat :
 
 i)  mengekstrak file zip tersebut.
-
 ii) menyimpan daftar file dari folder “campur2” yang memiliki ekstensi .txt ke dalam file daftar.txt. 
 
 Catatan:  
@@ -202,7 +201,6 @@ Kerjakan poin a dan b di bawah:
 a. Buatlah program c untuk mencatat log setiap menit dari file log pada syslog ke /home/[user]/log/[dd:MM:yyyy-hh:mm]/log#.log
 Ket:
 - Per 30 menit membuat folder /[dd:MM:yyyy-hh:mm]
-
 - Per menit memasukkan log#.log ke dalam folder tersebut
 ‘#’ : increment per menit. Mulai dari 1
 
