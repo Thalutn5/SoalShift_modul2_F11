@@ -130,6 +130,7 @@ Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”
 Buatlah program C yang dapat :
 
 i)  mengekstrak file zip tersebut.
+
 ii) menyimpan daftar file dari folder “campur2” yang memiliki ekstensi .txt ke dalam file daftar.txt. 
 
 Catatan:  
