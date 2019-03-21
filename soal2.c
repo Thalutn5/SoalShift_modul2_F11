@@ -50,7 +50,9 @@ int main() {
         stat(folderawal, &info); //ngambil info dari sebuah file di folder
         pwd = getpwuid(info.st_uid); //menambil id user lalu disimpan di tempat yg ditunjuk pwd && info = tempat nyimpen info sebuah file
         group =  getgrgid(info.st_gid); //mengambil id grup dari owner lalu disimpan di tempat yang ditunjuk gruop
-
+	chmod(folderawal, S_IRWXU | S_IRWXO | S_IRWXO );
+	//chmod(folderawal, 0777);
+	  
 	int if1 = (strcmp(pwd->pw_name, cari));
 	int if2 = (strcmp(group->gr_name, cari));
         if((if1==0) && (if2==0))
