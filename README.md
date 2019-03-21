@@ -113,7 +113,7 @@ Jawab :
 
 - Kita juga perlu mengganti permission menjadi 777
 
- 		chmod(folderawal, S_IRWXU | S_IRWXO | S_IRWXO );
+      chmod(folderawal, S_IRWXU | S_IRWXO | S_IRWXO );
 
 - Setelah itu kita membuat sebuah variabel integer yang dibuat untuk menampung jika perbandingan antara nama dari password dan group itu sama dengan isi dari variabel cari
 
