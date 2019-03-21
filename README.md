@@ -316,7 +316,7 @@ a.
 b. 
 
 - Setelah dapat menjalankan kodingan a, maka di soal b ini kita diminta untuk mengakhiri program a tadi
-- Didalam fungsi utama kita pertama membuat variabel char dengan isi argumen lalu kita mengeksekusi nama variabel tersebut
+- Didalam fungsi utama kita pertama membuat variabel char dengan isi argumen killall dan nama proses yang ingin kita matikan, lalu kita mengeksekusi nama variabel tersebut
 
       char nama[] = {"killall", "soal5", NULL};
       execv("/usr/bin/killall", nama);
