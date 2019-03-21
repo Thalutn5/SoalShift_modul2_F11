@@ -246,3 +246,70 @@ Ket:
 b. Buatlah program c untuk menghentikan program di atas.
 
 NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan program.
+
+Jawab :
+
+a. 
+
+- Setelah membuat struktur daemon, kita membuat sebuah variabel integer dan char diluar while pada daemon yang berguna sebagai iterasi dan variabel passing
+
+      int iterasi = 30;
+      char univ[256];
+      char univ2[256];
+      
+- Didalam while daemon saya membuat variabel dengan tipe data time_t untuk mendapatkan waktu sekarang, variabel char untuk menyimpan path dimana folder dan file tersebut akan disave, variabel char untuk savean waktu, dan sebuah struct tm dimana dia akan mengambil waktu secara detil dari time sekarang tadi
+
+      time_t ddd = time(NULL);
+      char folderawal[256]="/home/thalutn5/modul2/soal5/log/";
+      char time[30];
+      struct tm waktu = *localtime(&ddd);
+
+- Lalu kita membuat if dengan syarat jika variabel itearasi di modulus 30 maka ia akan membuat folder
+
+      if(iterasi % 30 == 0)
+      
+- Didalam if tadi kita akan membuat folder, dengan menggunakan sprintf dari format "%02d:%02d:%04d-%02d:%02d" lalu kita masukkan  kedalam variabel time 
+
+      sprintf(time, "%02d:%02d:%04d-%02d:%02d",waktu.tm_mday,waktu.tm_mon+1,waktu.tm_year+1900,waktu.tm_hour,waktu.tm_min);
+		
+- Lalu setelah kita mendapatkan nama foldernya, kita gabungkan nama folder tersebut dengan variabel folderawal dimana isinya adalah path folder itu akan berada
+
+      strcat(folderawal, time);
+      
+- Setelah itu kita baru membuat fungsi mkdir dimana ia akan membuat sebuah folder baru
+
+      mkdir(folderawal, 0777);
+      
+- Baru lah isi dari copy isi dari variabel folderawal ke variabel univ agar bisa dipassing menuju fork selanjutnya
+
+      strcpy(univ, folderawal);
+     
+- Diluar if tadi kita membuat variabel char dengan nama log yang berguna untuk menyimpan nama file log#.log 
+
+      char log[30];
+      
+- Lalu copy isi dari variabel univ ke variabel univ2 agar bisa dipassing menuju fork selanjutnya
+	
+      strcpy(univ2, univ);
+      
+- Kita menggunakan sprintf untuk memasukkan nama file tersebut dengan iterasi yang berasal dari variabel iterasi kedalam variabel log tadi	
+
+      sprintf(log, "/log%d.log",(iterasi%30)+1);
+	
+- Kita gabungkan variabel loga tadi dengan variabel univ2 yang isinya sama dengan variabel folderawal
+
+      strcat(univ2, log);
+     
+- Barulah kita melakukan fork
+	
+      forkan = fork();
+     
+- Didalam fork kita akan membuat file dengan melakukan mengopy isi dari /var/sys/log kedalam variabel univ2 tadi
+
+      char *cp[4] = {"cp", "/var/log/syslog", univ2, NULL};
+      execv("/bin/cp", cp);
+      
+ - Diluar fork tadi barulah kita menaikkan iterasi dan mengatur sleepnya selama 1 menit
+ 
+       iterasi++;
+       sleep(60);
